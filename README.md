@@ -166,4 +166,4 @@ If you encounter any issues or have questions:
 
 - [TMDB](https://www.themoviedb.org/) for providing the movie and TV show data
 - [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
-- All our [contributors](../../contributors)
+- All the Embbed Service We used 
