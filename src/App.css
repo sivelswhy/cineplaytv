@@ -1,0 +1,478 @@
+#root {
+  max-width: min(1280px, 90vw);
+  margin: 0 auto;
+  padding: clamp(1rem, 5vw, 2rem);
+  text-align: center;
+}
+
+.logo {
+  height: clamp(3em, 6vw, 6em);
+  padding: clamp(0.75em, 2vw, 1.5em);
+  will-change: filter;
+  transition: filter 300ms;
+  max-width: 100%;
+  height: auto;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+    transition: none;
+  }
+  
+  a:nth-of-type(2) .logo {
+    animation: none;
+  }
+}
+
+.card {
+  padding: clamp(1em, 3vw, 2em);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+  min-width: clamp(140px, 45vw, 200px);
+  touch-action: pan-y pinch-zoom;
+}
+
+.read-the-docs {
+  color: #888;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+@media (min-width: 640px) {
+  #root {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #root {
+    padding: 3rem;
+  }
+}
+
+/* Add smooth scrolling container for cards */
+.cards-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* For iOS momentum scrolling */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  
+  /* Enable horizontal touch scrolling */
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  padding: max(1rem, var(--safe-area-inset-left)) 1rem max(1rem, var(--safe-area-inset-right));
+  scroll-snap-type: x mandatory;
+  
+  /* Better touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  scroll-padding: 1rem;
+  
+  /* Prevent overscroll on iOS */
+  overscroll-behavior-x: contain;
+}
+
+/* Hide webkit scrollbar while maintaining functionality */
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional: Add touch-friendly hover alternative */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: flex-end; /* Position modal from bottom */
+  padding-bottom: var(--safe-area-inset-bottom);
+  touch-action: pan-y pinch-zoom;
+}
+
+.modal-content {
+  position: relative;
+  background: linear-gradient(to top, #181818 60%, transparent);
+  margin: 0;
+  width: 100%;
+  min-height: auto; /* Remove fixed height */
+  max-height: 90vh; /* Prevent keyboard issues */
+  padding: 0;
+  color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transform: translateY(0);
+  transition: transform 0.3s ease-out;
+  padding-bottom: max(1rem, var(--safe-area-inset-bottom));
+  overflow-y: auto;
+}
+
+/* Modal header section */
+.modal-header {
+  position: relative;
+  width: 100%;
+  height: 35vh; /* Shorter on mobile */
+  min-height: 200px; /* Minimum height */
+  margin-bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, #181818);
+}
+
+.modal-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: max(1rem, var(--safe-area-inset-top));
+  right: max(1rem, var(--safe-area-inset-right));
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  color: white;
+  width: var(--touch-target-size);
+  height: var(--touch-target-size);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  z-index: 1001;
+}
+
+/* Movie details */
+.modal-details {
+  text-align: left;
+  padding: 0 1rem 2rem 1rem;
+  margin-top: -4rem; /* Overlap with image */
+  position: relative;
+  background: #181818;
+}
+
+.modal-title {
+  font-size: clamp(1.25rem, 5vw, 1.5rem);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.modal-info {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: clamp(0.875rem, 4vw, 0.9rem);
+  color: #a3a3a3;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.match-score {
+  color: #46d369;
+  font-weight: bold;
+}
+
+/* Action buttons */
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: none;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 4vw, 1rem);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: var(--touch-target-size);
+}
+
+.play-button {
+  background: #fff;
+  color: #000;
+}
+
+.list-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Genre tags */
+.modal-genres {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.genre-tag {
+  color: #a3a3a3;
+  font-size: clamp(0.875rem, 3.5vw, 0.9rem);
+  padding: 0.5rem 0;
+}
+
+.genre-tag:not(:last-child)::after {
+  content: "•";
+  margin: 0 0.75rem;
+  color: #404040;
+}
+
+/* Description */
+.modal-description {
+  line-height: 1.6;
+  color: #fff;
+  margin: 1rem 0;
+  font-size: clamp(0.875rem, 4vw, 0.95rem);
+}
+
+/* Tablet and desktop adjustments */
+@media (min-width: 768px) {
+  .modal-overlay {
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .modal-content {
+    max-width: 850px;
+    margin: 0 auto;
+    max-height: 85vh;
+    padding-bottom: 2rem;
+    border-radius: 8px;
+    background: #181818;
+  }
+  
+  .modal-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 45vh;
+  }
+  
+  .modal-details {
+    padding: 0 2rem 2rem 2rem;
+  }
+  
+  .modal-title {
+    font-size: 2rem;
+  }
+  
+  .modal-close {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Touch-friendly card interactions */
+@media (hover: none) {
+  .card:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+  
+  .modal-button:active {
+    opacity: 0.8;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Loading states for better UX */
+.modal-loading {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Safe area handling */
+@supports (padding: max(0px)) {
+  .modal-content {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Base mobile-first variables */
+:root {
+  --touch-target-size: 48px;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+}
+
+/* Error state styling */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  background: #181818;
+}
+
+.error-title {
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.error-message {
+  font-size: clamp(0.875rem, 4vw, 1rem);
+  color: #a3a3a3;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: var(--touch-target-size);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.back-button:active {
+  transform: scale(0.98);
+}
+
+/* Error icon */
+.error-icon {
+  width: clamp(60px, 15vw, 100px);
+  height: clamp(60px, 15vw, 100px);
+  margin-bottom: 2rem;
+  opacity: 0.6;
+}
+
+/* Loading fallback */
+.loading-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #a3a3a3;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .error-container {
+    min-height: 70vh;
+  }
+  
+  .back-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Dark theme optimization */
+@media (prefers-color-scheme: dark) {
+  .error-container {
+    background: #141414;
+  }
+  
+  .back-button {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Better episode sidebar for mobile */
+@media (max-width: 640px) {
+  .episodes-list {
+    width: 90vw;
+    height: 80vh;
+    padding: 1rem;
+    padding-bottom: max(1rem, var(--safe-area-inset-bottom));
+  }
+  
+  .episode-item {
+    padding: 1rem;
+    gap: 0.75rem;
+    min-height: var(--touch-target-size);
+  }
+}
+
+/* Improved server buttons */
+.server-button {
+  min-height: var(--touch-target-size);
+  min-width: 80px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Enhanced mobile menu items */
+.mobile-menu-item {
+  min-height: var(--touch-target-size);
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+/* Loading and error states */
+.loading-fallback,
+.error-container {
+  min-height: 60vh;
+  padding: max(1rem, var(--safe-area-inset-top)) 1rem max(1rem, var(--safe-area-inset-bottom));
+}

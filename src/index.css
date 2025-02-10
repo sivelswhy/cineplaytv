@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #141414;
+  color: white;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.movie-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+  transform-origin: center center;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.numbered-movie-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  aspect-ratio: 2/3;
+  width: 100%;
+  transform-origin: center center;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.movie-card img, .numbered-movie-card img {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card:hover img, .numbered-movie-card:hover img {
+  transform: scale(1.1);
+}
+
+.movie-card:hover {
+  z-index: 50;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+}
+
+.numbered-movie-card:hover {
+  z-index: 50;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+}
+
+@media (min-width: 768px) {
+  .movie-card:hover {
+    transform: none;
+  }
+  
+  .numbered-movie-card:hover {
+    transform: none;
+  }
+}
+
+.movie-card-container {
+  padding: 0.2%;
+  transition: transform 0.3s ease;
+}
+
+.category-row-container {
+  margin-bottom: 3vw;
+  position: relative;
+}
+
+.category-row-container:hover {
+  z-index: 20;
+}
+
+.category-row-container:last-child {
+  margin-bottom: 4vw;
+}
+
+.netflix-gradient {
+  background: linear-gradient(77deg,rgba(0,0,0,.6) 0,rgba(0,0,0,0) 85%);
+}
+
+.hero-gradient {
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(20,20,20,0.9) 70%,
+    #141414 100%
+  );
+  pointer-events: none;
+}
+
+.modal-gradient {
+  background: linear-gradient(to top, #141414 10%, transparent 90%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
